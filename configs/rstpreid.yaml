@@ -1,0 +1,4 @@
+dataset: rstpreid
+fold_index: null
+output_dir: outputs/rstpreid
+checkpoint: outputs/rstpreid/best.pt

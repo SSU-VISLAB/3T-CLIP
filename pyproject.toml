@@ -1,0 +1,44 @@
+[project]
+name = "3t-clip"
+version = "0.1.0"
+description = "Time-to-target CLIP fine-tuning for text-based person search"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "open-clip-torch==3.3.0",
+    "numpy>=2,<3",
+    "pillow>=11,<13",
+    "pyyaml>=6,<7",
+    "tqdm>=4.67,<5",
+]
+
+[project.optional-dependencies]
+cuda = ["torch==2.8.0", "torchvision==0.23.0"]
+
+[project.scripts]
+t3clip-train = "t3clip.cli:train_main"
+t3clip-eval = "t3clip.cli:eval_main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/t3clip"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"configs/config.yaml" = "t3clip/config.yaml"
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cu128", extra = "cuda" },
+]
+torchvision = [
+    { index = "pytorch-cu128", extra = "cuda" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
