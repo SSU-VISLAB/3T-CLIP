@@ -1,0 +1,3 @@
+dataset: cuhk-pedes
+output_dir: outputs/cuhk-pedes
+checkpoint: outputs/cuhk-pedes/best.pt

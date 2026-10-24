@@ -1,0 +1,4 @@
+dataset: icfg-pedes
+fold_index: null
+output_dir: outputs/icfg-pedes
+checkpoint: outputs/icfg-pedes/best.pt
